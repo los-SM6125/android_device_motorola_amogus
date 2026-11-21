@@ -19,6 +19,9 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 # Inherit device makefile
 $(call inherit-product, device/motorola/amogus/device.mk)
 
+# Disable LineageOS EPPE because AOSPA qcom_common / sm8150 declare multi-SoC packages
+TARGET_DISABLE_EPPE := true
+
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 

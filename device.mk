@@ -75,10 +75,6 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.base@1.0.vendor
 
-# Init
-PRODUCT_PACKAGES += \
-    init.amogus.sh
-
 # Model
 PRODUCT_MODEL := moto g(8) family
 
