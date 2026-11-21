@@ -12,4 +12,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_MAKEFILES := $(wildcard device/motorola/targets/devices/amogus/*.mk)
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/lineage_amogus.mk
+
+COMMON_LUNCH_CHOICES := \
+    lineage_amogus-userdebug \
+    lineage_amogus-user \
+    lineage_amogus-eng

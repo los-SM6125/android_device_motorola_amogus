@@ -22,15 +22,11 @@ PRODUCT_SHIPPING_API_LEVEL := 29
 AB_OTA_PARTITIONS += \
     boot \
     dtbo \
+    product \
+    recovery \
     system \
     vendor \
     vbmeta
-
-ifneq ($(TARGET_IS_AMOGUS_DOHA),true)
-  AB_OTA_PARTITIONS += \
-      product \
-      recovery
-endif
 
 AB_OTA_POSTINSTALL_CONFIG := \
     RUN_POSTINSTALL_system=true \
@@ -88,6 +84,8 @@ PRODUCT_MODEL := moto g(8) family
 
 # Overlays
 PRODUCT_PACKAGES += \
+    amogusFrameworksOverlay \
+    amogusSettingsOverlay \
     ravFrameworksOverlay \
     sofiaFrameworksOverlay \
     sofiapFrameworksOverlay \
@@ -134,9 +132,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qcom.bluetooth.soc=cherokee
 
 # Recovery
-ifneq ($(TARGET_IS_AMOGUS_DOHA),true)
-  include $(PLATFORM_COMMON_PATH)/device-recovery.mk
-endif
+include $(PLATFORM_COMMON_PATH)/device-recovery.mk
 
 # Telephony
 PRODUCT_PROPERTY_OVERRIDES += \

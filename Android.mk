@@ -1,13 +1,15 @@
-ifneq (,$(filter amogus amogus_doha,$(TARGET_DEVICE)))
+ifeq ($(TARGET_DEVICE),amogus)
 
 LOCAL_PATH := $(call my-dir)
 
 include $(call all-subdir-makefiles)
 
+ifneq ($(PRODUCT_VENDOR_KERNEL_HEADERS),)
 $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr: $(wildcard $(PRODUCT_VENDOR_KERNEL_HEADERS)/*)
 	rm -rf $@
 	mkdir -p $@/include
 	cp -a $(PRODUCT_VENDOR_KERNEL_HEADERS)/. $@/include
+endif
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := amogus_folders
