@@ -119,7 +119,11 @@ PRODUCT_USES_QCOM_HARDWARE := true
 PRODUCT_USES_PIXEL_POWER_HAL := true
 
 # Props
-$(call copy-files-recursive,$(PLATFORM_COMMON_PATH)/props,$(TARGET_COPY_OUT_VENDOR))
+PRODUCT_COPY_FILES += \
+    $(PLATFORM_COMMON_PATH)/props/build_rav.prop:$(TARGET_COPY_OUT_VENDOR)/build_rav.prop \
+    $(PLATFORM_COMMON_PATH)/props/build_sofia.prop:$(TARGET_COPY_OUT_VENDOR)/build_sofia.prop \
+    $(PLATFORM_COMMON_PATH)/props/build_sofiap.prop:$(TARGET_COPY_OUT_VENDOR)/build_sofiap.prop \
+    $(PLATFORM_COMMON_PATH)/props/build_sofiar.prop:$(TARGET_COPY_OUT_VENDOR)/build_sofiar.prop
 
 TARGET_VENDOR_PROP += $(PLATFORM_COMMON_PATH)/props/vendor.prop
 
@@ -136,5 +140,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/motorola/common/common.mk)
+
 # include board vendor blobs
 $(call inherit-product-if-exists, vendor/motorola/amogus/amogus-vendor.mk)
