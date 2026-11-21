@@ -1,0 +1,2 @@
+allow init vendor_camera_etc_file:file mounton;
+allow init vendor_sensor_etc_file:{ dir file } mounton;

@@ -11,10 +11,7 @@
 /dev/block/platform/soc/4744000\.sdhci/by-name/utagsBackup u:object_r:vendor_utags_block_device:s0
 
 # Camera
-/vendor/etc/camera(/.*)? u:object_r:vendor_camera_data_file:s0
-
-# Init Scripts
-/vendor/bin/init.amogus.sh u:object_r:amogus-sh_exec:s0
+/vendor/etc/camera(/.*)? u:object_r:vendor_camera_etc_file:s0
 
 # Sensors
-/vendor/etc/sensors(/.*)? u:object_r:vendor_sensor_data_file:s0
+/vendor/etc/sensors(/.*)? u:object_r:vendor_sensor_etc_file:s0
