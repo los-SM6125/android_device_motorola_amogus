@@ -1,0 +1,4 @@
+runtime_resource_overlay {
+    name: "amogusApertureOverlay",
+    product_specific: true,
+}

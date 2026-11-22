@@ -80,7 +80,9 @@ PRODUCT_MODEL := moto g(8) family
 
 # Overlays
 PRODUCT_PACKAGES += \
+    amogusApertureOverlay \
     amogusFrameworksOverlay \
+    amogusLineageSDKOverlay \
     amogusSettingsOverlay \
     ravFrameworksOverlay \
     sofiaFrameworksOverlay \
@@ -92,6 +94,10 @@ PRODUCT_PACKAGES += \
     sofiapSystemUIOverlay \
     sofiapSSystemUIOverlay \
     sofiarSystemUIOverlay
+
+# Charging Control
+PRODUCT_PACKAGES += \
+    vendor.lineage.health-service.default
 
 ## Regulatory
 PRODUCT_PACKAGES += \
