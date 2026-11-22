@@ -34,11 +34,34 @@ on boot
 
 on property:sys.boot_completed=1
     # Runtime fs tuning for runtime performance
-    write /sys/block/mmcblk0/queue/read_ahead_kb 2048
+    write /sys/block/mmcblk0/queue/read_ahead_kb 128
     write /sys/block/mmcblk0/queue/nr_requests 128
     write /sys/block/mmcblk0/queue/iostats 1
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/dm-1/queue/read_ahead_kb 2048
+    write /sys/block/dm-0/queue/read_ahead_kb 128
+    write /sys/block/dm-1/queue/read_ahead_kb 128
+
+on property:vendor.post_boot.parsed=1
+    # Keep background tasks constrained to two little cores after QCOM post_boot
+    write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/system-background/cpus 0-1
+
+    # Schedutil rate limits (fixes QCOM post_boot missing policy4 on trinket)
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpufreq/policy0/schedutil/down_rate_limit_us 20000
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/up_rate_limit_us 1000
+    write /sys/devices/system/cpu/cpufreq/policy4/schedutil/down_rate_limit_us 10000
+
+    # Memory / ZRAM tuning with PSI LMKD
+    write /sys/module/process_reclaim/parameters/enable_process_reclaim 0
+    write /proc/sys/vm/swappiness 180
+    write /proc/sys/vm/vfs_cache_pressure 50
+
+on property:ro.boot.device=rav
+    mount none /vendor/etc/sensors/config-rav /vendor/etc/sensors/config bind
+
+# Prebuilt camera HAL fails initial sensor enumeration on first start; restart once sensors are probed
+on property:sys.boot_completed=1 && property:ro.boot.device=rav
+    restart vendor.camera-provider-2-4
 
 on property:ro.boot.device=sofia
     mount none /vendor/etc/camera/dual_golden_sofia.bin /vendor/etc/camera/dual_golden.bin bind
