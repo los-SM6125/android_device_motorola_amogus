@@ -39,3 +39,9 @@ PRODUCT_ENABLE_UFFD_GC := false
 
 # Libhidl
 PLATFORM_PROVIDES_LIBHIDL := true
+
+# GApps (MindTheGapps)
+WITH_GAPPS ?= true
+ifeq ($(WITH_GAPPS),true)
+$(call inherit-product-if-exists, vendor/gapps/arm64/arm64-vendor.mk)
+endif
