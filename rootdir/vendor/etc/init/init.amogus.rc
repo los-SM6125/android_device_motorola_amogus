@@ -40,6 +40,9 @@ on property:sys.boot_completed=1
     write /sys/block/dm-0/queue/read_ahead_kb 128
     write /sys/block/dm-1/queue/read_ahead_kb 128
 
+    # Prebuilt camera HAL fails initial sensor enumeration on first start; restart once sensors are probed
+    restart vendor.camera-provider-2-4
+
 on property:vendor.post_boot.parsed=1
     # Keep background tasks constrained to two little cores after QCOM post_boot
     write /dev/cpuset/background/cpus 0-1
@@ -58,10 +61,6 @@ on property:vendor.post_boot.parsed=1
 
 on property:ro.boot.device=rav
     mount none /vendor/etc/sensors/config-rav /vendor/etc/sensors/config bind
-
-# Prebuilt camera HAL fails initial sensor enumeration on first start; restart once sensors are probed
-on property:sys.boot_completed=1 && property:ro.boot.device=rav
-    restart vendor.camera-provider-2-4
 
 on property:ro.boot.device=sofia
     mount none /vendor/etc/camera/dual_golden_sofia.bin /vendor/etc/camera/dual_golden.bin bind
