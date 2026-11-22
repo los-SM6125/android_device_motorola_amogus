@@ -86,6 +86,7 @@
 
 	<!-- ti2558 smart amplifier start -->
 	<ctl name="TAS2562 Left Speaker Switch" value="Off" />
+	<ctl name="TAS2562 Digital Volume" value="110" />
 	<ctl name="PRIM_MI2S_RX Format" value="S16_LE" />
 	<!-- smart amplifier end -->
 
