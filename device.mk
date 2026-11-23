@@ -39,11 +39,14 @@ PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREBUILT_DPI := xxhdpi xhdpi hdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
+# Dalvik heap
+$(call inherit-product, frameworks/native/build/phone-xhdpi-4096-dalvik-heap.mk)
+
 # Camera
 TARGET_NEEDS_RAW10_BUFFER_FIX := true
 TARGET_USES_64BIT_CAMERA := false
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.camera.tof.direct=1
 
 ## Camera Requirements
@@ -67,7 +70,7 @@ TARGET_USES_EGISTEC_FINGERPRINT := true
 TARGET_USES_FPC_FINGERPRINT := true
 
 # Gatekeeper
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     vendor.gatekeeper.disable_spu=true
 
 # HIDL
@@ -134,14 +137,14 @@ PRODUCT_COPY_FILES += \
 TARGET_VENDOR_PROP += $(PLATFORM_COMMON_PATH)/props/vendor.prop
 
 # QCOM Bluetooth
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     persist.vendor.qcom.bluetooth.soc=cherokee
 
 # Recovery
 include $(PLATFORM_COMMON_PATH)/device-recovery.mk
 
 # Telephony
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_VENDOR_PROPERTIES += \
     ro.telephony.default_network=10,10
 
 # Audio effects (override QCOM trinket audio_effects.xml referencing missing offload_bundle)
