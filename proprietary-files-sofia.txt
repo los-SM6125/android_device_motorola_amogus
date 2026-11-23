@@ -32,8 +32,8 @@ vendor/etc/acdbdata/Speaker_cal.acdb:vendor/etc/acdbdata/sofiap/Speaker_cal.acdb
 vendor/etc/camera/dual_golden.bin:vendor/etc/camera/dual_golden_sofiar.bin
 vendor/etc/camera/mot_ov16e10_sofiarow_chromatix.xml
 vendor/etc/camera/mot_ov8856_chromatix.xml
-vendor/lib/libmmcamera_mot_s5k4h7.so:vendor/lib/libmmcamera_mot_s5k4h7_sofiar.so
-vendor/lib/libmmcamera_mot_s5k4h7_eeprom.so:vendor/lib/libmmcamera_mot_s5k4h7_sofiar_eeprom.so
+vendor/lib/libmmcamera_mot_s5k4h7.so:vendor/lib/libmmcamera_mot_s5k4h7_sofiar.so;DISABLE_CHECKELF
+vendor/lib/libmmcamera_mot_s5k4h7_eeprom.so:vendor/lib/libmmcamera_mot_s5k4h7_sofiar_eeprom.so;DISABLE_CHECKELF
 
 # Display Calibration - from sofia R
 vendor/etc/qdcm_calib_data_mipi_mot_vid_auo_1080p_636.xml
@@ -93,7 +93,7 @@ vendor/etc/sensors/config/lsm6dso_0_16g.json:vendor/etc/sensors/config-sofia/lsm
 vendor/etc/sensors/config/lsm6dso_0_8g.json:vendor/etc/sensors/config-sofia/lsm6dso_0_8g.json
 vendor/etc/sensors/config/ltr2568_0.json:vendor/etc/sensors/config-sofia/ltr2568_0.json
 vendor/etc/sensors/config/ltr308_0_on_change.json:vendor/etc/sensors/config-sofia/ltr308_0_on_change.json
-vendor/etc/sensors/config/mmc5603x_0.json:vendor/etc/sensors/config-sofia/mmc5603x_0.json:
+vendor/etc/sensors/config/mmc5603x_0.json:vendor/etc/sensors/config-sofia/mmc5603x_0.json
 vendor/etc/sensors/config/mot_chopchop.json:vendor/etc/sensors/config-sofia/mot_chopchop.json
 vendor/etc/sensors/config/mot_devorient.json:vendor/etc/sensors/config-sofia/mot_devorient.json
 vendor/etc/sensors/config/mot_ltv.json:vendor/etc/sensors/config-sofia/mot_ltv.json

@@ -144,6 +144,10 @@ include $(PLATFORM_COMMON_PATH)/device-recovery.mk
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.telephony.default_network=10,10
 
+# Audio effects (override QCOM trinket audio_effects.xml referencing missing offload_bundle)
+PRODUCT_COPY_FILES += \
+    device/motorola/common/rootdir/vendor/etc/audio_effects.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio_effects.xml
+
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/motorola/common/common.mk)
 

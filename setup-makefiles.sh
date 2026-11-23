@@ -34,6 +34,18 @@ if [ ! -f "${HELPER}" ]; then
 fi
 source "${HELPER}"
 
+function vendor_imports() {
+    cat <<EOF >>"$1"
+		"hardware/qcom/display",
+		"vendor/motorola/common/hardware/qcom",
+		"vendor/qcom/common/vendor/adreno-r",
+		"vendor/qcom/common/vendor/dsprpcd",
+		"vendor/qcom/common/vendor/qseecomd-legacy",
+		"vendor/qcom/opensource/dataservices",
+		"vendor/qcom/opensource/display-commonsys-intf",
+EOF
+}
+
 # Initialize the helper
 setup_vendor "${DEVICE}" "${VENDOR}" "${ANDROID_ROOT}"
 

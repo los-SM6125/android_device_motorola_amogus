@@ -32,7 +32,9 @@ TARGET_KERNEL_LLVM_BINUTILS := false
 TARGET_KERNEL_NO_GCC := false
 TARGET_KERNEL_CONFIG := vendor/amogus_defconfig
 TARGET_KERNEL_SOURCE := kernel/motorola/msm-4.14
-BOARD_KERNEL_CMDLINE += androidboot.usbcontroller=4e00000.dwc3
+BOARD_KERNEL_CMDLINE += \
+    androidboot.boot_devices=soc/4744000.sdhci \
+    androidboot.usbcontroller=4e00000.dwc3
 
 # SELinux
 BOARD_USE_ENFORCING_SELINUX := true
@@ -61,10 +63,10 @@ BOARD_SUPER_PARTITION_GROUPS := mot_dynamic_partitions
 TARGET_TAP_TO_WAKE_NODE := "/sys/class/sensors/dt-gesture/enable"
 
 # Charging Control
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_PATH := /sys/class/power_supply/battery/input_suspend
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_ENABLED := 0
-TARGET_HEALTH_CHARGING_CONTROL_CHARGING_DISABLED := 1
-TARGET_HEALTH_CHARGING_CONTROL_SUPPORTS_BYPASS := false
+$(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
+$(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
+$(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
+$(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
 
 # Recovery
 RECOVERY_KERNEL_MODULES += \

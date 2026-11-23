@@ -19,7 +19,7 @@ vendor/etc/camera/mot_s5k4h7yx03_chromatix.xml
 vendor/etc/camera/mot_s5k4h7_chromatix.xml
 
 # Camera-libs - from rav R
-vendor/lib/libmmcamera_mot_ov02a.so:vendor/lib/libmmcamera_mot_ov02a_rav.so
+vendor/lib/libmmcamera_mot_ov02a.so:vendor/lib/libmmcamera_mot_ov02a_rav.so;DISABLE_CHECKELF
 
 # Firmware - from rav R
 vendor/firmware/focaltech-boe-ft8009-09-0000-rav.bin
