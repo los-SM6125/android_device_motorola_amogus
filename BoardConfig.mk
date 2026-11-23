@@ -59,9 +59,6 @@ BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := erofs
 BOARD_SUPER_PARTITION_SIZE := 8925478912
 BOARD_SUPER_PARTITION_GROUPS := mot_dynamic_partitions
 
-# Power
-TARGET_TAP_TO_WAKE_NODE := "/sys/class/sensors/dt-gesture/enable"
-
 # Charging Control
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
