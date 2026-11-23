@@ -16,6 +16,8 @@ DEVICE_PATH := device/motorola/amogus
 
 # AVB
 BOARD_AVB_ENABLE := true
+BOARD_AVB_ROLLBACK_INDEX := 20
+BOARD_AVB_MAKE_VBMETA_IMAGE_ARGS += --flags 3
 
 # Arch
 TARGET_ARCH_VARIANT := armv8-a
