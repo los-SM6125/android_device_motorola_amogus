@@ -119,4 +119,7 @@
          waiting on disk I/O or lowmemorykiller.  Directly added to the default value chosen by
          ActivityManager based on screen size. -->
     <integer name="config_extraFreeKbytesAdjust">131072</integer>
+
+    <!-- Whether the Unprocessed audio source supports the required frequency range and level -->
+    <bool name="config_supportAudioSourceUnprocessed">true</bool>
 </resources>
