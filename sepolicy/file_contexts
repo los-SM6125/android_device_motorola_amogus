@@ -82,6 +82,8 @@
 
 # Camera
 /vendor/etc/camera(/.*)?                                               u:object_r:vendor_camera_etc_file:s0
+/dev/stmvl53l1                                                         u:object_r:vendor_laser_device:s0
+/vendor/bin/vl53l1_daemon                                              u:object_r:vendor_vl53l1_daemon_exec:s0
 
 # Sensors
 /vendor/etc/sensors(/.*)?                                              u:object_r:vendor_sensor_etc_file:s0

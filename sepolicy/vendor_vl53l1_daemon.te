@@ -1,0 +1,17 @@
+type vendor_vl53l1_daemon, domain;
+type vendor_vl53l1_daemon_exec, exec_type, vendor_file_type, file_type;
+type vendor_laser_device, dev_type;
+
+init_daemon_domain(vendor_vl53l1_daemon)
+
+# Kernel stmvl53l1 IPP communicates via Netlink protocol 8 (NETLINK_ISCSI)
+allow vendor_vl53l1_daemon self:netlink_iscsi_socket create_socket_perms_no_ioctl;
+
+allow vendor_vl53l1_daemon vendor_laser_device:chr_file rw_file_perms;
+
+r_dir_file(vendor_vl53l1_daemon, vendor_sysfs_laser)
+allow vendor_vl53l1_daemon vendor_sysfs_laser:file rw_file_perms;
+
+allow vendor_vl53l1_daemon mnt_vendor_file:dir search;
+r_dir_file(vendor_vl53l1_daemon, vendor_persist_camera_file)
+allow vendor_vl53l1_daemon vendor_persist_camera_file:file rw_file_perms;

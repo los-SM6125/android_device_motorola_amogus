@@ -81,3 +81,25 @@ on property:ro.boot.device=sofiar
 # DualSIM
 on property:ro.boot.dualsim=true
     setprop persist.radio.multisim.config dsds
+
+# Laser ToF daemon (present on rav and sofiap)
+service vendor.vl53l1_daemon /vendor/bin/vl53l1_daemon
+    class late_start
+    user camera
+    group camera system oem_5004
+    disabled
+
+on boot && property:ro.boot.device=rav
+    chown camera camera /dev/stmvl53l1
+    chmod 0660 /dev/stmvl53l1
+    start vendor.vl53l1_daemon
+
+on boot && property:ro.boot.device=sofiap
+    chown camera camera /dev/stmvl53l1
+    chmod 0660 /dev/stmvl53l1
+    start vendor.vl53l1_daemon
+
+on boot && property:ro.boot.device=sofiap_sprout
+    chown camera camera /dev/stmvl53l1
+    chmod 0660 /dev/stmvl53l1
+    start vendor.vl53l1_daemon
