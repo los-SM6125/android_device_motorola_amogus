@@ -148,10 +148,6 @@ include $(PLATFORM_COMMON_PATH)/device-recovery.mk
 PRODUCT_VENDOR_PROPERTIES += \
     ro.telephony.default_network=10,10
 
-# Blur (Material 3 Expressive / SurfaceFlinger)
-PRODUCT_VENDOR_PROPERTIES += \
-    ro.surface_flinger.supports_background_blur=1
-
 # ZRAM Writeback
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.qti.config.zram=false \
