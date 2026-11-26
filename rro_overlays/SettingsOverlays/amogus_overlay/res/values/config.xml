@@ -19,4 +19,7 @@
     <!-- Message shown in fingerprint enrollment dialog to locate the sensor -->
     <string name="security_settings_fingerprint_enroll_find_sensor_message">
         Locate the fingerprint sensor on the back of your phone.</string>
+
+    <!-- Fuel gauge reports 0 cycles on hardware; keep cycle count hidden -->
+    <bool name="config_show_battery_cycle_count">false</bool>
 </resources>
