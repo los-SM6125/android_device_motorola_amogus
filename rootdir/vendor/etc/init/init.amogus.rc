@@ -43,6 +43,9 @@ on property:sys.boot_completed=1
     # Prebuilt camera HAL fails initial sensor enumeration on first start; restart once sensors are probed
     restart vendor.camera-provider-2-4
 
+    # Enable ZRAM with writeback backing device (after init.rc creates /data/per_boot)
+    swapon_all /vendor/etc/fstab.zram_wb
+
 on property:vendor.post_boot.parsed=1
     # Keep background tasks constrained to two little cores after QCOM post_boot
     write /dev/cpuset/background/cpus 0-1
@@ -88,18 +91,25 @@ service vendor.vl53l1_daemon /vendor/bin/vl53l1_daemon
     user camera
     group camera system oem_5004
     disabled
+    oneshot
 
 on boot && property:ro.boot.device=rav
+    chown camera camera /dev/laser
+    chmod 0660 /dev/laser
     chown camera camera /dev/stmvl53l1
     chmod 0660 /dev/stmvl53l1
     start vendor.vl53l1_daemon
 
 on boot && property:ro.boot.device=sofiap
+    chown camera camera /dev/laser
+    chmod 0660 /dev/laser
     chown camera camera /dev/stmvl53l1
     chmod 0660 /dev/stmvl53l1
     start vendor.vl53l1_daemon
 
 on boot && property:ro.boot.device=sofiap_sprout
+    chown camera camera /dev/laser
+    chmod 0660 /dev/laser
     chown camera camera /dev/stmvl53l1
     chmod 0660 /dev/stmvl53l1
     start vendor.vl53l1_daemon

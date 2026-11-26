@@ -6,6 +6,7 @@ init_daemon_domain(vendor_vl53l1_daemon)
 
 # Kernel stmvl53l1 IPP communicates via Netlink protocol 8 (NETLINK_ISCSI)
 allow vendor_vl53l1_daemon self:netlink_iscsi_socket create_socket_perms_no_ioctl;
+allow vendor_vl53l1_daemon self:netlink_socket create_socket_perms_no_ioctl;
 
 allow vendor_vl53l1_daemon vendor_laser_device:chr_file rw_file_perms;
 
