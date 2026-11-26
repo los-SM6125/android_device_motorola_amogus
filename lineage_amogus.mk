@@ -41,6 +41,7 @@ PRODUCT_SOURCE_ROOT_DIRS += \
     -hardware/qcom-caf/sm8550 \
     -hardware/qcom-caf/sm8650 \
     -hardware/qcom-caf/sm8750 \
+    -hardware/qcom-caf/sm8850 \
     -vendor/qcom/common/vendor/adreno/s \
     -vendor/qcom/common/vendor/adreno/t \
     -vendor/qcom/common/vendor/adreno/u \
