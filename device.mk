@@ -18,6 +18,7 @@ PLATFORM_COMMON_PATH := device/motorola/amogus
 # A/B support
 AB_OTA_UPDATER := true
 PRODUCT_SHIPPING_API_LEVEL := 29
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
 AB_OTA_PARTITIONS += \
     boot \
@@ -146,6 +147,17 @@ include $(PLATFORM_COMMON_PATH)/device-recovery.mk
 # Telephony
 PRODUCT_VENDOR_PROPERTIES += \
     ro.telephony.default_network=10,10
+
+# Blur (Material 3 Expressive / SurfaceFlinger)
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.surface_flinger.supports_background_blur=1
+
+# ZRAM Writeback
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.vendor.qti.config.zram=false \
+    ro.zram.mark_idle_delay_mins=60 \
+    ro.zram.first_wb_delay_mins=180 \
+    ro.zram.periodic_wb_delay_hours=24
 
 # Audio effects (override QCOM trinket audio_effects.xml referencing missing offload_bundle)
 PRODUCT_COPY_FILES += \

@@ -3,3 +3,6 @@ import /vendor/build_${ro.boot.device}.prop
 
 # SoC
 ro.soc.model=SM6125
+
+# Display / Model
+ro.vendor.product.model=moto g(8) family

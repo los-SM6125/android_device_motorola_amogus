@@ -22,6 +22,36 @@ $(call inherit-product, device/motorola/amogus/device.mk)
 # Disable LineageOS EPPE because AOSPA qcom_common / sm8150 declare multi-SoC packages
 TARGET_DISABLE_EPPE := true
 
+# Exclude unused LineageOS qcom-caf and AOSP qcom SoC trees and GKI-only QCOM libs that depend on Lineage qcom-caf/common defaults/headers
+PRODUCT_SOURCE_ROOT_DIRS += \
+    -hardware/qcom/audio \
+    -hardware/qcom/sdm845 \
+    -hardware/qcom/sm7250 \
+    -hardware/qcom/sm8150 \
+    -hardware/qcom-caf/msm8953 \
+    -hardware/qcom-caf/msm8996 \
+    -hardware/qcom-caf/msm8998 \
+    -hardware/qcom-caf/sdm660 \
+    -hardware/qcom-caf/sdm845 \
+    -hardware/qcom-caf/sm8150 \
+    -hardware/qcom-caf/sm8250 \
+    -hardware/qcom-caf/sm8350 \
+    -hardware/qcom-caf/sm8450 \
+    -hardware/qcom-caf/sm8450-6.6 \
+    -hardware/qcom-caf/sm8550 \
+    -hardware/qcom-caf/sm8650 \
+    -hardware/qcom-caf/sm8750 \
+    -vendor/qcom/common/vendor/adreno/s \
+    -vendor/qcom/common/vendor/adreno/t \
+    -vendor/qcom/common/vendor/adreno/u \
+    -vendor/qcom/common/vendor/display/4.9 \
+    -vendor/qcom/common/vendor/display/5.10 \
+    -vendor/qcom/common/vendor/display/5.15 \
+    -vendor/qcom/common/vendor/media/5.4 \
+    -vendor/qcom/common/vendor/media/5.10 \
+    -vendor/qcom/common/vendor/perf \
+    -vendor/qcom/opensource/libvmmem
+
 # Inherit some common Lineage stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
@@ -35,7 +65,7 @@ PRODUCT_NAME := lineage_amogus
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
 # UFFD
-PRODUCT_ENABLE_UFFD_GC := false
+PRODUCT_ENABLE_UFFD_GC := true
 
 # Libhidl
 PLATFORM_PROVIDES_LIBHIDL := true

@@ -29,7 +29,7 @@ TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a53
 
 # Kernel
 TARGET_KERNEL_IMAGE_NAME := Image.gz-dtb
-TARGET_KERNEL_CLANG_VERSION := r383902
+TARGET_KERNEL_CLANG_VERSION := r563880c
 TARGET_KERNEL_LLVM_BINUTILS := false
 TARGET_KERNEL_NO_GCC := false
 TARGET_KERNEL_CONFIG := vendor/amogus_defconfig
@@ -65,7 +65,12 @@ BOARD_SUPER_PARTITION_GROUPS := mot_dynamic_partitions
 $(call soong_config_set,lineage_health,charging_control_charging_path,/sys/class/power_supply/battery/input_suspend)
 $(call soong_config_set,lineage_health,charging_control_charging_enabled,0)
 $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
-$(call soong_config_set,lineage_health,charging_control_supports_bypass,false)
+$(call soong_config_set_bool,lineage_health,charging_control_supports_bypass,false)
+
+# Bootanimation
+TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 2300
+TARGET_BOOTANIMATION_HALF_RES := true
 
 # Recovery
 RECOVERY_KERNEL_MODULES += \
@@ -73,4 +78,15 @@ RECOVERY_KERNEL_MODULES += \
 BOARD_RECOVERY_RAMDISK_KERNEL_MODULES_LOAD += \
     qpnp-smbcharger-mmi.ko
 
+# Vendor kernel modules loaded during early-init
+BOARD_VENDOR_KERNEL_MODULES_LOAD := \
+    qpnp-smbcharger-mmi.ko \
+    stmvl53l1.ko \
+    sx933x_sar.ko \
+    aw8624.ko \
+    aw8695.ko
+
 include device/motorola/common/CommonConfig.mk
+
+# LiveDisplay (override common's enable_dm=false to expose SDM DisplayModes)
+$(call soong_config_set_bool,livedisplay_sdm,enable_dm,true)
