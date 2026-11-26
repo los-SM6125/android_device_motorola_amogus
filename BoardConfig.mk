@@ -87,6 +87,3 @@ BOARD_VENDOR_KERNEL_MODULES_LOAD := \
     aw8695.ko
 
 include device/motorola/common/CommonConfig.mk
-
-# LiveDisplay (override common's enable_dm=false to expose SDM DisplayModes)
-$(call soong_config_set_bool,livedisplay_sdm,enable_dm,true)
