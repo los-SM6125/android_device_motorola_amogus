@@ -125,4 +125,7 @@
 
     <!-- Enable Desktop Mode developer option -->
     <bool name="config_isDesktopModeDevOptionSupported">true</bool>
+
+    <!-- Enable ZRAM writeback -->
+    <bool name="config_zramWriteback">true</bool>
 </resources>

@@ -52,6 +52,7 @@ PRODUCT_VENDOR_PROPERTIES += \
 
 ## Camera Requirements
 PRODUCT_PACKAGES += \
+    android.frameworks.displayservice@1.0 \
     libcamera_shim \
     libgbp_shim \
     libgui_vendor
@@ -149,11 +150,21 @@ PRODUCT_VENDOR_PROPERTIES += \
     ro.telephony.default_network=10,10
 
 # ZRAM Writeback
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.sys.zram_enabled=1
+
 PRODUCT_VENDOR_PROPERTIES += \
     ro.vendor.qti.config.zram=false \
     ro.zram.mark_idle_delay_mins=60 \
     ro.zram.first_wb_delay_mins=180 \
     ro.zram.periodic_wb_delay_hours=24
+
+# Android 17 SurfaceFlinger & UI Tunables
+PRODUCT_PRODUCT_PROPERTIES += \
+    sys.use_fifo_ui=1
+
+PRODUCT_VENDOR_PROPERTIES += \
+    ro.surface_flinger.enable_layer_caching=true
 
 # Audio effects (override QCOM trinket audio_effects.xml referencing missing offload_bundle)
 PRODUCT_COPY_FILES += \
