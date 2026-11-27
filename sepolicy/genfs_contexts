@@ -26,6 +26,12 @@ genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-02/1c40000.q
 genfscon sysfs /devices/platform/soc/4744000.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
 genfscon sysfs /devices/platform/soc/4744000.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/mmcblk0rpmb/queue/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
 genfscon sysfs /devices/platform/soc/4744000.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/discard_max_bytes u:object_r:vendor_sysfs_mmc_host:s0
+genfscon sysfs /devices/virtual/block/dm-0/queue/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
+genfscon sysfs /devices/virtual/block/dm-1/queue/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
+genfscon sysfs /devices/virtual/block/dm-2/queue/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
+genfscon sysfs /devices/virtual/block/dm-3/queue/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
+genfscon sysfs /devices/virtual/bdi/179:0/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
+genfscon sysfs /devices/virtual/bdi/179:32/read_ahead_kb u:object_r:vendor_sysfs_mmc_host:s0
 
 # Subsystem restart (SSR)
 genfscon sysfs /devices/platform/soc/6080000.qcom,mss/subsys0/name         u:object_r:vendor_sysfs_ssr:s0
@@ -42,6 +48,7 @@ genfscon sysfs /devices/platform/soc/soc:qcom,cpu0-cpu-ddr-latfloor/devfreq u:ob
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu4-cpu-ddr-latfloor/devfreq u:object_r:vendor_sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu-cpu-ddr-bw/devfreq u:object_r:vendor_sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/5900000.qcom,kgsl-3d0/kgsl/kgsl-3d0 u:object_r:vendor_sysfs_kgsl:s0
+genfscon sysfs /devices/platform/soc/5900000.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpu_model u:object_r:vendor_sysfs_kgsl_gpu_model:s0
 genfscon sysfs /devices/platform/soc/5900000.qcom,kgsl-3d0/kgsl/kgsl-3d0/devfreq u:object_r:vendor_sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/5900000.qcom,kgsl-3d0/devfreq u:object_r:vendor_sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,gpubw/devfreq u:object_r:vendor_sysfs_devfreq:s0
