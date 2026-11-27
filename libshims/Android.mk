@@ -16,3 +16,12 @@ LOCAL_MODULE_TAGS := optional
 LOCAL_PROPRIETARY_MODULE := true
 LOCAL_VENDOR_MODULE := true
 include $(BUILD_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+LOCAL_SRC_FILES := android.frameworks.displayservice@1.0.cpp
+LOCAL_SHARED_LIBRARIES := lineage.frameworks.displayservice@1.0 libhidlbase libutils libcutils
+LOCAL_MODULE := android.frameworks.displayservice@1.0
+LOCAL_MODULE_TAGS := optional
+LOCAL_PROPRIETARY_MODULE := true
+LOCAL_VENDOR_MODULE := true
+include $(BUILD_SHARED_LIBRARY)
